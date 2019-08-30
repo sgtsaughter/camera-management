@@ -11,21 +11,21 @@ export class InMemoryDataService implements InMemoryDbService {
   createDb() {
     const cameraAssignment = [
       {
-        id: 0,
+        id: 1,
         cameraId: 123,
         vehicleId: 1,
         DateCreated: 1567181525976,
         Deleted: false,
       },
       {
-        id: 1,
+        id: 2,
         cameraId: 456,
         vehicleId: 1,
         DateCreated: 1567181591135,
         Deleted: false,
       },
       {
-        id: 2,
+        id: 3,
         cameraId: 789,
         vehicleId: 1,
         DateCreated: 1567181604106,
@@ -35,30 +35,30 @@ export class InMemoryDataService implements InMemoryDbService {
 
     const vehicle = [
       {
-        id: 0,
+        id: 1,
         name: 'Toyota',
       },
       {
-        id: 0,
+        id: 2,
         name: 'Honda',
       },
       {
-        id: 0,
+        id: 3,
         name: 'Ford',
       },
     ];
 
     const camera = [
       {
-        id: 0,
+        id: 1,
         deviceNumber: 123,
       },
       {
-        id: 1,
+        id: 2,
         deviceNumber: 456,
       },
       {
-        id: 2,
+        id: 3,
         deviceNumber: 789,
       },
     ];
