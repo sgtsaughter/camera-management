@@ -13,13 +13,20 @@ export class AppComponent implements OnInit {
   currentCameras: any;
   currentVehicles: any;
 
+  // Hardcoded mock data to simulate creation data.
+  newAssignment = {
+    id: 19999,
+    cameraId: 9999,
+    vehicleId: 1,
+    DateCreated: 1567181591135,
+    Deleted: true,
+  };
+
   constructor(private cameraAssignmentService: CameraAssignmentService) {
   }
 
   ngOnInit(): void {
-    this.cameraAssignmentService.getCameraAssignments().subscribe((res) => {
-      this.currentAssignments = res;
-    });
+    this.getAllAssignments();
 
     this.cameraAssignmentService.getVehicles().subscribe((res) => {
       this.currentVehicles = res;
@@ -29,6 +36,28 @@ export class AppComponent implements OnInit {
       this.currentCameras = res;
     });
 
+  }
+
+  getAllAssignments() {
+    this.cameraAssignmentService.getCameraAssignments().subscribe((res) => {
+      this.currentAssignments = res;
+    });
+  }
+
+  createAssignment(data) {
+    this.cameraAssignmentService.addCameraAssignments(this.newAssignment).subscribe(data=>{
+      console.log('create assignment', data);
+      if (data.body !== null) {
+        this.getAllAssignments();
+      }
+    });
+  }
+
+  deleteAssignment(assignmentId) {
+    this.cameraAssignmentService.deleteAssignment(assignmentId).subscribe( data => {
+      console.log('Delete Assignment', data);
+      this.getAllAssignments();
+    });
   }
 
 }
