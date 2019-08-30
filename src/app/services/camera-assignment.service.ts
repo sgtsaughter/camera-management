@@ -7,12 +7,22 @@ import { map } from 'rxjs/internal/operators';
   providedIn: 'root'
 })
 export class CameraAssignmentService {
-  private baseAPiURL = 'api/cameraAssignment';
+  private cameraAssignmentURL = 'api/cameraAssignment';
+  private vehicleURL = 'api/vehicle';
+  private cameraURL = 'api/camera';
 
   constructor(private http: HttpClient) { }
 
-  getHeroes() {
-    return this.http.get(this.baseAPiURL);
+  getCameraAssignments() {
+    return this.http.get(this.cameraAssignmentURL);
+  }
+
+  getVehicles() {
+    return this.http.get(this.vehicleURL);
+  }
+
+  getCameras() {
+    return this.http.get(this.cameraURL);
   }
 
 }

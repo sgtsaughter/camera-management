@@ -10,14 +10,25 @@ import { CameraAssignmentService } from './services/camera-assignment.service';
 export class AppComponent implements OnInit {
   title = 'camera-mangement';
   currentAssignments:any;
+  currentCameras: any;
+  currentVehicles: any;
 
   constructor(private cameraAssignmentService: CameraAssignmentService) {
   }
 
   ngOnInit(): void {
-    this.cameraAssignmentService.getHeroes().subscribe((res) => {
+    this.cameraAssignmentService.getCameraAssignments().subscribe((res) => {
       this.currentAssignments = res;
     });
+
+    this.cameraAssignmentService.getVehicles().subscribe((res) => {
+      this.currentVehicles = res;
+    });
+
+    this.cameraAssignmentService.getCameras().subscribe((res) => {
+      this.currentCameras = res;
+    });
+
   }
 
 }

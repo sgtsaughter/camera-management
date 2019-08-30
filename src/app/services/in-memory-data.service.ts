@@ -32,6 +32,37 @@ export class InMemoryDataService implements InMemoryDbService {
         Deleted: false,
       }
     ];
-    return { cameraAssignment };
+
+    const vehicle = [
+      {
+        id: 0,
+        name: 'Toyota',
+      },
+      {
+        id: 0,
+        name: 'Honda',
+      },
+      {
+        id: 0,
+        name: 'Ford',
+      },
+    ];
+
+    const camera = [
+      {
+        id: 0,
+        deviceNumber: 123,
+      },
+      {
+        id: 1,
+        deviceNumber: 456,
+      },
+      {
+        id: 2,
+        deviceNumber: 789,
+      },
+    ];
+
+    return { cameraAssignment, vehicle, camera };
   }
 }
