@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CameraAssignmentService } from '../../services/camera-assignment.service';
 import { MatTableDataSource, MatSort } from '@angular/material';
 import { CameraAssignment, Vehicle, Camera } from '../../interfaces/camera-assignment.interface';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { UtilityDialogComponent } from '../utility-dialog/utility-dialog.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -24,7 +26,7 @@ export class DashboardComponent implements OnInit {
     Deleted: true,
   };
 
-  constructor(private cameraAssignmentService: CameraAssignmentService) {
+  constructor(private cameraAssignmentService: CameraAssignmentService, public dialog: MatDialog) {
   }
 
   ngOnInit(): void {
@@ -58,7 +60,7 @@ export class DashboardComponent implements OnInit {
   }
 
   createAssignment(data) {
-    this.cameraAssignmentService.addCameraAssignments(this.newAssignment).subscribe(data=>{
+    this.cameraAssignmentService.addCameraAssignments(data).subscribe(data=>{
       console.log('create assignment', data);
       if (data.body !== null) {
         this.getAllAssignments();
@@ -70,6 +72,23 @@ export class DashboardComponent implements OnInit {
     this.cameraAssignmentService.deleteAssignment(assignmentId).subscribe( data => {
       console.log('Delete Assignment', data);
       this.getAllAssignments();
+    });
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(UtilityDialogComponent, {
+      width: '750px',
+      data: {vehicles: this.currentVehicles, cameras: this.currentCameras}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      console.log(result);
+      result.DateCreated = new Date();
+      result.id = Math.floor((Math.random() * 100) + 1);
+      result.Deleted = false;
+
+      this.createAssignment(result);
     });
   }
 

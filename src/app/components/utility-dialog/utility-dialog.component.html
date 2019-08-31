@@ -1,0 +1,22 @@
+<h3>Assign a camera to a vehicle</h3>
+
+<mat-form-field class="input-class">
+  <mat-label>Select a vehicle:</mat-label>
+  <mat-select >
+    <mat-option *ngFor="let item of data.vehicles" [value]="item.id">
+      {{item.name}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<mat-form-field class="input-class">
+  <mat-label>Select a camera:</mat-label>
+  <mat-select >
+    <mat-option *ngFor="let item of data.cameras" [value]="item.id">
+      {{item.deviceNumber}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<br>
+<button mat-raised-button [mat-dialog-close]="assignmentData">Create Camera Assignment</button>
