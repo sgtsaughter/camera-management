@@ -6,6 +6,7 @@ export interface CameraAssignment {
     vehicleId: number;
     DateCreated: number;
     Deleted: boolean;
+    vehicleName: string;
 }
 
 export interface Vehicle {

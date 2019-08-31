@@ -10,9 +10,9 @@ import { CameraAssignment, Vehicle, Camera } from '../../interfaces/camera-assig
 })
 export class DashboardComponent implements OnInit {
 
-  currentAssignments:any;
-  currentCameras: any;
-  currentVehicles: any;
+  currentAssignments: CameraAssignment[];
+  currentCameras: Camera[];
+  currentVehicles: Vehicle[];
   displayedColumns: string[] = ['id', 'cameraId', 'vehicleId', 'DateCreated', 'Deleted'];
 
   // Hardcoded mock data to simulate creation data.
@@ -29,11 +29,11 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.cameraAssignmentService.getVehicles().subscribe((res) => {
+    this.cameraAssignmentService.getVehicles().subscribe((res: Vehicle[]) => {
       this.currentVehicles = res;
     });
 
-    this.cameraAssignmentService.getCameras().subscribe((res) => {
+    this.cameraAssignmentService.getCameras().subscribe((res: Camera[]) => {
       this.currentCameras = res;
     });
 
@@ -41,7 +41,7 @@ export class DashboardComponent implements OnInit {
   }
 
   getAllAssignments() {
-    this.cameraAssignmentService.getCameraAssignments().subscribe((res: any) => {
+    this.cameraAssignmentService.getCameraAssignments().subscribe((res: CameraAssignment[]) => {
       this.currentAssignments = res;
 
       // Mapping Current Assignment's vehicle ids with vehicle names.
