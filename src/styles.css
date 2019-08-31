@@ -1,1 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+table {
+    width: 100%;
+  }
+
+table tr:hover {
+    background-color: grey;
+}
+
+.mat-header-row:hover {
+    background-color:rgb(255, 255, 255);
+}

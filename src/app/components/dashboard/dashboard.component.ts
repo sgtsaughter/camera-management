@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CameraAssignmentService } from '../../services/camera-assignment.service';
+import { MatTableDataSource, MatSort } from '@angular/material';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,6 +12,7 @@ export class DashboardComponent implements OnInit {
   currentAssignments:any;
   currentCameras: any;
   currentVehicles: any;
+  displayedColumns: string[] = ['id', 'cameraId', 'vehicleId', 'DateCreated', 'Deleted'];
 
   // Hardcoded mock data to simulate creation data.
   newAssignment = {
@@ -25,7 +27,6 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getAllAssignments();
 
     this.cameraAssignmentService.getVehicles().subscribe((res) => {
       this.currentVehicles = res;
@@ -35,6 +36,7 @@ export class DashboardComponent implements OnInit {
       this.currentCameras = res;
     });
 
+    this.getAllAssignments();
   }
 
   getAllAssignments() {
