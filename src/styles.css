@@ -12,3 +12,12 @@ table tr:hover {
 .mat-header-row:hover {
     background-color:rgb(255, 255, 255);
 }
+
+/* helper classes */
+.hover-red:hover {
+    color: red;
+}
+
+.pointer {
+    cursor: pointer;
+}

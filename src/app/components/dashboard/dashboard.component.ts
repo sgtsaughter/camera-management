@@ -13,7 +13,7 @@ export class DashboardComponent implements OnInit {
   currentAssignments: CameraAssignment[];
   currentCameras: Camera[];
   currentVehicles: Vehicle[];
-  displayedColumns: string[] = ['id', 'cameraId', 'vehicleId', 'DateCreated', 'Deleted'];
+  displayedColumns: string[] = ['id', 'cameraId', 'vehicleId', 'DateCreated', 'Deleted', 'Delete'];
 
   // Hardcoded mock data to simulate creation data.
   newAssignment = {
