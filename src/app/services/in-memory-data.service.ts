@@ -20,14 +20,14 @@ export class InMemoryDataService implements InMemoryDbService {
       {
         id: 2,
         cameraId: 456,
-        vehicleId: 1,
+        vehicleId: 2,
         DateCreated: 1567181591135,
         Deleted: false,
       },
       {
         id: 3,
         cameraId: 789,
-        vehicleId: 1,
+        vehicleId: 3,
         DateCreated: 1567181604106,
         Deleted: false,
       }

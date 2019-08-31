@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CameraAssignmentService } from '../../services/camera-assignment.service';
 import { MatTableDataSource, MatSort } from '@angular/material';
+import { CameraAssignment, Vehicle, Camera } from '../../interfaces/camera-assignment.interface';
 
 @Component({
   selector: 'app-dashboard',
@@ -40,8 +41,19 @@ export class DashboardComponent implements OnInit {
   }
 
   getAllAssignments() {
-    this.cameraAssignmentService.getCameraAssignments().subscribe((res) => {
+    this.cameraAssignmentService.getCameraAssignments().subscribe((res: any) => {
       this.currentAssignments = res;
+
+      // Mapping Current Assignment's vehicle ids with vehicle names.
+      // In a real world situation I would have asked the backend team to supply the vehicle name for all Current Assignments.
+      this.currentAssignments.map(assignment => {
+        this.currentVehicles.forEach(element => {
+          if (element.id === assignment.vehicleId) {
+            assignment.vehicleName = element.name;
+          }
+        });
+      });
+
     });
   }
 
