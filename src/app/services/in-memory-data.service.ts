@@ -12,21 +12,21 @@ export class InMemoryDataService implements InMemoryDbService {
     const cameraAssignment = [
       {
         id: 1,
-        cameraId: 123,
+        cameraId: 1,
         vehicleId: 1,
         DateCreated: 1567181525976,
         Deleted: false,
       },
       {
         id: 2,
-        cameraId: 456,
+        cameraId: 2,
         vehicleId: 2,
         DateCreated: 1567181591135,
         Deleted: false,
       },
       {
         id: 3,
-        cameraId: 789,
+        cameraId: 3,
         vehicleId: 3,
         DateCreated: 1567181604106,
         Deleted: false,

@@ -46,14 +46,21 @@ export class DashboardComponent implements OnInit {
     this.cameraAssignmentService.getCameraAssignments().subscribe((res: CameraAssignment[]) => {
       this.currentAssignments = res;
 
-      // Mapping Current Assignment's vehicle ids with vehicle names.
-      // In a real world situation I would have asked the backend team to supply the vehicle name for all Current Assignments.
+      // Mapping Current Assignment's vehicle ids with vehicle names and camera ids with device numbers.
+      // In a real world situation I would have asked the backend team to supply the vehicle names
+      // and device numbers for all Current Assignments.
       this.currentAssignments.map(assignment => {
         this.currentVehicles.forEach(element => {
           if (element.id === assignment.vehicleId) {
             assignment.vehicleName = element.name;
           }
         });
+        this.currentCameras.forEach(element => {
+          if (element.id === assignment.cameraId) {
+            assignment.deviceNumber = element.deviceNumber;
+          }
+        });
+
       });
 
     });

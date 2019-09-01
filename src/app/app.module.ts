@@ -1,12 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-import {MatButtonModule} from '@angular/material/button';
-import { MatTableModule } from '@angular/material/table';
-import {MatDialogModule} from '@angular/material/dialog';
-
-
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
@@ -29,6 +24,7 @@ import { VTSMaterialModule } from './modules/material-module';
     BrowserAnimationsModule,
     VTSMaterialModule,
     HttpClientModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { delay: 100 }),
 

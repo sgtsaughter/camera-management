@@ -1,5 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-utility-dialog',
@@ -7,7 +8,11 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
   styleUrls: ['./utility-dialog.component.css']
 })
 export class UtilityDialogComponent implements OnInit {
-  assignmentData = {vehicleId: 1, cameraId: 123} // TODO: replace this with formControl data
+
+  assignmentForm = new FormGroup({
+    vehicleId: new FormControl(''),
+    cameraId: new FormControl(''),
+  });
 
   constructor(public dialogRef: MatDialogRef<UtilityDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data) { }
@@ -19,6 +24,11 @@ export class UtilityDialogComponent implements OnInit {
 
   onNoClick(): void {
     this.dialogRef.close();
+  }
+
+  onSubmit() {
+    console.log(this.assignmentForm.value);
+    this.dialogRef.close(this.assignmentForm.value);
   }
 
 }
