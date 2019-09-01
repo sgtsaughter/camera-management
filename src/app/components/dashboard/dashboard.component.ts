@@ -82,13 +82,15 @@ export class DashboardComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      console.log(result);
-      result.DateCreated = new Date();
-      result.id = Math.floor((Math.random() * 100) + 1);
-      result.Deleted = false;
+      if (result !== undefined) {
+        console.log(result);
+        result.DateCreated = new Date();
+        result.id = Math.floor((Math.random() * 100) + 1);
+        result.Deleted = false;
 
-      this.createAssignment(result);
+        this.createAssignment(result);
+      }
+      console.log('The dialog was closed');
     });
   }
 

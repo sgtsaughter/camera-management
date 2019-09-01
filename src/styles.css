@@ -26,3 +26,18 @@ table tr:hover {
 .pointer {
     cursor: pointer;
 }
+
+.dialog-close {
+    position: relative;
+    left: 97%;
+    bottom: 90px;
+    cursor: pointer;
+    color: black;
+    font-size: 40px;
+    font-weight: bold;
+    line-height: 0px;
+}
+
+.dialog-close::before {
+    content: '×';
+  }
