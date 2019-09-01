@@ -29,12 +29,6 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## TODO
 
-Create UI for dashboard
-
-Implement popup modal for warning messages
-
-Add search feature on dashboard
-
 Add edit functionality for assignments.
 
 Make sure to unsubscribe to all subscriptions in components.
