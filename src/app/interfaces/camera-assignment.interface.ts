@@ -7,7 +7,7 @@ export interface CameraAssignment {
     DateCreated: number;
     Deleted: boolean;
     vehicleName: string;
-    deviceNumber: number;
+    deviceNumber: string;
 }
 
 export interface Vehicle {
@@ -17,5 +17,5 @@ export interface Vehicle {
 
 export interface Camera {
     id: number;
-    deviceNumber: number;
+    deviceNumber: string;
 }

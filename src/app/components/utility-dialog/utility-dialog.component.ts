@@ -15,7 +15,10 @@ export class UtilityDialogComponent implements OnInit {
   });
 
   constructor(public dialogRef: MatDialogRef<UtilityDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data) { }
+    @Inject(MAT_DIALOG_DATA) public data) {
+      // Disable Outside-close
+      dialogRef.disableClose = true;
+    }
 
   ngOnInit() {
     console.log(this.data);
