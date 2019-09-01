@@ -1,5 +1,3 @@
-import { Timestamp } from 'rxjs/internal/operators/timestamp';
-
 export interface CameraAssignment {
     id: number;
     cameraId: number;
