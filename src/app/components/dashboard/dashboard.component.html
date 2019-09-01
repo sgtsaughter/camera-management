@@ -37,23 +37,9 @@
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
 
-
-<!-- <h4>Vehicles</h4>
-<div class="grid grid-pad">
-  <a *ngFor="let vehicle of currentVehicles"  class="col-1-4">
-      <div>
-          <h4>{{vehicle | json}}</h4>
-      </div>
-  </a>
-</div> -->
-
-<!-- <h4>Cameras</h4>
-<div class="grid grid-pad">
-  <a *ngFor="let camera of currentCameras"  class="col-1-4">
-      <div>
-          <h4>{{camera | json}}</h4>
-      </div>
-  </a>
-</div> -->
-<br>
-<button (click)="openDialog()">Open dialog</button>
+<div (click)="openDialog()" class="icon-text-panel fixBtn" >
+  <div class="icon-text create-assignment-button">
+    <i class="fa fa-plus margin-top-10"></i>
+    <p class="create-assignment-text">Create<br />Assignment</p>
+  </div>
+</div>

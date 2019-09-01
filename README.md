@@ -29,16 +29,11 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## TODO
 
-Add interfaces for Camera, Vehicle, and CameraAssignment data types
-
 Create UI for dashboard
-
 
 Implement popup modal for warning messages
 
 Add search feature on dashboard
-
-Create Assignment UI with check that won't let user create if camera or vehicle is already assigned.
 
 Add edit functionality for assignments.
 

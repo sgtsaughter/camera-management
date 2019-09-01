@@ -41,4 +41,39 @@ table tr:hover {
 
 .dialog-close::before {
     content: '×';
-  }
+}
+
+.margin-top-10 {
+    margin-top: 10px;
+}
+
+
+.fixBtn {
+    position: fixed;
+    bottom: 30px;
+    right: 25px;
+    z-index: 9999;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.fixBtn .create-assignment-button {
+    text-align: center;
+    background-color: #009eff;
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    color: #fff;
+    box-shadow: 2px 2px 3px #00000026;
+    padding: .1rem 0;
+    display: inline-block;
+}
+
+.fixBtn .create-assignment-button .create-assignment-text {
+    margin: 0;
+    padding: 0;
+    font-size: .6em;
+    line-height: 1.2em;
+    font-weight: 500;
+    font-size: 13px;
+}
