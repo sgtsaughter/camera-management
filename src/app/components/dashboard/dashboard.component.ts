@@ -4,6 +4,7 @@ import { MatTableDataSource, MatSort } from '@angular/material';
 import { CameraAssignment, Vehicle, Camera } from '../../interfaces/camera-assignment.interface';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { UtilityDialogComponent } from '../utility-dialog/utility-dialog.component';
+import { NotifierService } from 'angular-notifier';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,6 +12,7 @@ import { UtilityDialogComponent } from '../utility-dialog/utility-dialog.compone
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+  private readonly notifier: NotifierService;
 
   currentAssignments: CameraAssignment[];
   currentCameras: Camera[];
@@ -18,7 +20,8 @@ export class DashboardComponent implements OnInit {
   displayedColumns: string[] = ['id', 'cameraId', 'vehicleId', 'DateCreated', 'Deleted', 'Delete'];
   dataSource: any;
 
-  constructor(private cameraAssignmentService: CameraAssignmentService, public dialog: MatDialog) {
+  constructor(notifierService: NotifierService, private cameraAssignmentService: CameraAssignmentService, public dialog: MatDialog) {
+    this.notifier = notifierService;
   }
 
   ngOnInit(): void {
@@ -79,6 +82,7 @@ export class DashboardComponent implements OnInit {
     this.cameraAssignmentService.deleteAssignment(assignmentId).subscribe( data => {
       console.log('Delete Assignment', data);
       this.getAllAssignments();
+      this.notifier.notify( 'warning', `Assignment ${assignmentId} Successfully Deleted.`);
     });
   }
 
