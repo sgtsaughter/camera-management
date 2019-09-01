@@ -6,7 +6,7 @@
 <form [formGroup]="assignmentForm" (ngSubmit)="onSubmit()">
   <mat-form-field class="input-class">
     <mat-label>Select a vehicle:</mat-label>
-    <mat-select formControlName="vehicleId">
+    <mat-select formControlName="vehicleId" required>
       <mat-option *ngFor="let item of data.vehicles" [value]="item.id">
         {{item.name}}
       </mat-option>
@@ -15,7 +15,7 @@
   
   <mat-form-field class="input-class">
     <mat-label>Select a camera:</mat-label>
-    <mat-select formControlName="cameraId">
+    <mat-select formControlName="cameraId" required>
       <mat-option *ngFor="let item of data.cameras" [value]="item.id">
         {{item.deviceNumber}}
       </mat-option>

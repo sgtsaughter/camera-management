@@ -17,15 +17,6 @@ export class DashboardComponent implements OnInit {
   currentVehicles: Vehicle[];
   displayedColumns: string[] = ['id', 'cameraId', 'vehicleId', 'DateCreated', 'Deleted', 'Delete'];
 
-  // Hardcoded mock data to simulate creation data.
-  newAssignment = {
-    id: 19999,
-    cameraId: 9999,
-    vehicleId: 1,
-    DateCreated: 1567181591135,
-    Deleted: true,
-  };
-
   constructor(private cameraAssignmentService: CameraAssignmentService, public dialog: MatDialog) {
   }
 
@@ -91,8 +82,8 @@ export class DashboardComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result !== undefined) {
         console.log(result);
-        result.DateCreated = new Date();
-        result.id = Math.floor((Math.random() * 100) + 1);
+        result.DateCreated = new Date(); // Normally backend would generate timestamp .
+        result.id = Math.floor((Math.random() * 100) + 1); // Normally backend would generate id.
         result.Deleted = false;
 
         this.createAssignment(result);
