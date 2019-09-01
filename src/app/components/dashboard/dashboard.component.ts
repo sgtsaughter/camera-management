@@ -76,7 +76,7 @@ export class DashboardComponent implements OnInit {
   openDialog(): void {
     const dialogRef = this.dialog.open(UtilityDialogComponent, {
       width: '750px',
-      data: {vehicles: this.currentVehicles, cameras: this.currentCameras}
+      data: { vehicles: this.currentVehicles, cameras: this.currentCameras, assignments: this.currentAssignments }
     });
 
     dialogRef.afterClosed().subscribe(result => {

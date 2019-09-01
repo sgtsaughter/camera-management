@@ -25,3 +25,14 @@
   <button type="submit" [disabled]="!assignmentForm.valid" mat-raised-button>Create Camera Assignment</button>
 </form>
 
+<div *ngIf="assignmentError">
+  <div *ngIf="camerIdMatch && vehicleIdMatch">
+    The camera AND vehicle you chose are already assigned.
+  </div>
+  <div *ngIf="camerIdMatch && !vehicleIdMatch">
+    The CAMERA you chose is already assigned
+  </div>
+  <div *ngIf="!camerIdMatch && vehicleIdMatch">
+      The VEHICLE you chose is already assigned
+  </div>
+</div>
