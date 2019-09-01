@@ -17,8 +17,10 @@ export class DashboardComponent implements OnInit {
   currentAssignments: CameraAssignment[];
   currentCameras: Camera[];
   currentVehicles: Vehicle[];
-  displayedColumns: string[] = ['id', 'cameraId', 'vehicleId', 'DateCreated', 'Deleted', 'Delete'];
+  displayedColumns: string[] = ['id', 'cameraId', 'vehicleId', 'DateCreated', 'Deleted', 'Edit', 'Delete'];
   dataSource: any;
+  editMode: boolean = false;
+  editId: number;
 
   constructor(notifierService: NotifierService, private cameraAssignmentService: CameraAssignmentService, public dialog: MatDialog) {
     this.notifier = notifierService;
@@ -78,6 +80,19 @@ export class DashboardComponent implements OnInit {
     });
   }
 
+  updateAssignment(data) {
+    this.cameraAssignmentService.updateAssignment(data).subscribe(data=>{
+      console.log('create assignment', data);
+        this.getAllAssignments();
+    });
+  }
+
+  editAssignment(assignmentId: number) {
+    this.editMode = true;
+    this.editId = assignmentId;
+    this.openDialog();
+  }
+
   deleteAssignment(assignmentId) {
     this.cameraAssignmentService.deleteAssignment(assignmentId).subscribe( data => {
       console.log('Delete Assignment', data);
@@ -89,17 +104,28 @@ export class DashboardComponent implements OnInit {
   openDialog(): void {
     const dialogRef = this.dialog.open(UtilityDialogComponent, {
       width: '750px',
-      data: { vehicles: this.currentVehicles, cameras: this.currentCameras, assignments: this.currentAssignments }
+      data: {
+        vehicles: this.currentVehicles,
+        cameras: this.currentCameras,
+        assignments: this.currentAssignments,
+        editMode: this.editMode,
+        editId: this.editId,
+      }
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result !== undefined) {
         console.log(result);
-        result.DateCreated = new Date(); // Normally backend would generate timestamp .
-        result.id = Math.floor((Math.random() * 100) + 1); // Normally backend would generate id.
-        result.Deleted = false;
 
-        this.createAssignment(result);
+        // If we're in edit mode, call the update function, else call the create function.
+        if (this.editMode) {
+          // reset flag and id.
+          this.editMode = false;
+          this.editId = undefined;
+          this.updateAssignment(result);
+        } else {
+          this.createAssignment(result);
+        }
       }
       console.log('The dialog was closed');
     });

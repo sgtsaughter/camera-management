@@ -38,6 +38,11 @@
     <td mat-cell *matCellDef="let element"> {{element.Deleted}} </td>
   </ng-container>
 
+  <ng-container matColumnDef="Edit">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let element"> <i title="Edit Assignment" (click)="editAssignment(element.id)" class="fa fa-edit pointer"></i></td>
+  </ng-container>
+
   <ng-container matColumnDef="Delete">
     <th mat-header-cell *matHeaderCellDef></th>
     <td mat-cell *matCellDef="let element"> <i title="Delete Assignment" (click)="deleteAssignment(element.id)" class="fa fa-trash hover-red pointer"></i></td>

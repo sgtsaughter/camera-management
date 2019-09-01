@@ -25,6 +25,7 @@
   </div>
 
   <div class="text-center mt-3">
-      <button type="submit" [disabled]="!assignmentForm.valid" mat-raised-button>Create Camera Assignment</button>
+      <button *ngIf="!data.editMode" type="submit" [disabled]="!assignmentForm.valid" mat-raised-button>Create Camera Assignment</button>
+      <button *ngIf="data.editMode" type="submit" [disabled]="!assignmentForm.valid" mat-raised-button>Edit Camera Assignment</button>
   </div>
 </form>

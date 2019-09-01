@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { FormGroup, FormControl } from '@angular/forms';
 import { NotifierService } from 'angular-notifier';
+import { CameraAssignment, Vehicle, Camera } from '../../interfaces/camera-assignment.interface';
 
 @Component({
   selector: 'app-utility-dialog',
@@ -11,6 +12,7 @@ import { NotifierService } from 'angular-notifier';
 export class UtilityDialogComponent implements OnInit {
 
   private readonly notifier: NotifierService;
+  assignmentByID;
 
   assignmentForm = new FormGroup({
     vehicleId: new FormControl(''),
@@ -26,6 +28,14 @@ export class UtilityDialogComponent implements OnInit {
 
   ngOnInit() {
     console.log(this.data);
+    if (this.data.editMode) {
+      // Populate the form with the data from the editId.
+      this.assignmentByID = this.data.assignments.filter(assignment => {
+        return assignment.id === this.data.editId;
+      });
+      console.log(this.assignmentByID);
+      this.assignmentForm.setValue({vehicleId: this.assignmentByID[0].vehicleId, cameraId: this.assignmentByID[0].cameraId });
+    }
 
   }
 
@@ -54,8 +64,25 @@ export class UtilityDialogComponent implements OnInit {
         this.notifier.notify( 'error', 'Sorry, you chose a vehicle that is already assigned.' );
       }
     } else {
-      this.dialogRef.close(this.assignmentForm.value);
-      this.notifier.notify( 'success', 'Your assignment has been created' );
+      if (!this.data.editMode) {
+        let result = {
+          DateCreated : new Date(), // Normally backend would generate date.
+          id:  Math.floor((Math.random() * 100) + 1), // Normally backend would generate id.
+          Deleted: false,
+          vehicleId: this.assignmentForm.get('vehicleId').value,
+          cameraId: this.assignmentForm.get('cameraId').value
+        };
+
+        this.dialogRef.close(result);
+        this.notifier.notify( 'success', 'Your assignment has been created' );
+      } else {
+        console.log(this.assignmentByID)
+        this.assignmentByID[0].vehicleId = this.assignmentForm.get('vehicleId').value,
+        this.assignmentByID[0].cameraId = this.assignmentForm.get('cameraId').value,
+        this.dialogRef.close(this.assignmentByID[0]);
+        this.notifier.notify( 'success', 'Your assignment has been edited' );
+      }
+      
     }
 
   }

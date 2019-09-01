@@ -30,6 +30,10 @@ export class CameraAssignmentService {
     return this.http.post(this.cameraAssignmentURL, data, { observe: 'response' });
   }
 
+  updateAssignment(update: any) {
+    return this.http.put(`${this.cameraAssignmentURL}/${update.id}`, update,  { observe: 'response' });
+  }
+
   deleteAssignment(assignmentId: number) {
     const deleteUrl = this.cameraAssignmentURL + '/' + assignmentId;
     return this.http.delete(deleteUrl, { observe: 'response' });
