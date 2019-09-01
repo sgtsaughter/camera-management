@@ -22,7 +22,7 @@ table tr:hover {
 .dialog-close {
     position: relative;
     left: 97%;
-    bottom: 90px;
+    bottom: 50px;
     cursor: pointer;
     color: black;
     font-size: 40px;
@@ -51,13 +51,17 @@ table tr:hover {
 .fixBtn .create-assignment-button {
     text-align: center;
     background-color: #009eff;
-    height: 80px;
-    width: 80px;
+    height: 100px;
+    width: 100px;
     border-radius: 50%;
     color: #fff;
     box-shadow: 2px 2px 3px #00000026;
     padding: .1rem 0;
     display: inline-block;
+}
+
+.fixBtn .create-assignment-button:hover {
+    background-color: red;
 }
 
 .fixBtn .create-assignment-button .create-assignment-text {
@@ -66,7 +70,7 @@ table tr:hover {
     font-size: .6em;
     line-height: 1.2em;
     font-weight: 500;
-    font-size: 13px;
+    font-size: 15px;
 }
 
 /* helper classes */

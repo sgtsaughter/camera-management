@@ -3,24 +3,28 @@
   <a class="dialog-close" (click)="dialogRef.close()"></a>
 </mat-dialog-actions>
 
-<form [formGroup]="assignmentForm" (ngSubmit)="onSubmit()">
-  <mat-form-field class="input-class">
-    <mat-label>Select a vehicle:</mat-label>
-    <mat-select formControlName="vehicleId" required>
-      <mat-option *ngFor="let item of data.vehicles" [value]="item.id">
-        {{item.name}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-  
-  <mat-form-field class="input-class">
-    <mat-label>Select a camera:</mat-label>
-    <mat-select formControlName="cameraId" required>
-      <mat-option *ngFor="let item of data.cameras" [value]="item.id">
-        {{item.deviceNumber}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-  <br>
-  <button type="submit" [disabled]="!assignmentForm.valid" mat-raised-button>Create Camera Assignment</button>
+<form class="container" [formGroup]="assignmentForm" (ngSubmit)="onSubmit()">
+  <div class="row">
+    <mat-form-field class="input-class col-6">
+      <mat-label>Select a vehicle:</mat-label>
+      <mat-select formControlName="vehicleId" required>
+        <mat-option *ngFor="let item of data.vehicles" [value]="item.id">
+          {{item.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    
+    <mat-form-field class="input-class col-6">
+      <mat-label>Select a camera:</mat-label>
+      <mat-select formControlName="cameraId" required>
+        <mat-option *ngFor="let item of data.cameras" [value]="item.id">
+          {{item.deviceNumber}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="text-center mt-3">
+      <button type="submit" [disabled]="!assignmentForm.valid" mat-raised-button>Create Camera Assignment</button>
+  </div>
 </form>
