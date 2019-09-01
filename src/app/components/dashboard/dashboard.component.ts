@@ -16,6 +16,7 @@ export class DashboardComponent implements OnInit {
   currentCameras: Camera[];
   currentVehicles: Vehicle[];
   displayedColumns: string[] = ['id', 'cameraId', 'vehicleId', 'DateCreated', 'Deleted', 'Delete'];
+  dataSource: any;
 
   constructor(private cameraAssignmentService: CameraAssignmentService, public dialog: MatDialog) {
   }
@@ -54,6 +55,14 @@ export class DashboardComponent implements OnInit {
 
       });
 
+      // Set dataSource to build table and filter.
+      this.dataSource = new MatTableDataSource(this.currentAssignments);
+
+      // Only filter by vehicleName and deviceNumber on the table.
+      this.dataSource.filterPredicate = function(data, filter: string): boolean {
+        return data.vehicleName.toLowerCase().includes(filter) || data.deviceNumber.toLowerCase().includes(filter);
+      };
+
     });
   }
 
@@ -90,6 +99,10 @@ export class DashboardComponent implements OnInit {
       }
       console.log('The dialog was closed');
     });
+  }
+
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
 }

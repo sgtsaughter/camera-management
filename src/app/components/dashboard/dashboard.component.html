@@ -1,7 +1,11 @@
 <h1>Camera Assignment Dashboard</h1>
 <h4>Assignments</h4>
 
-<table mat-table [dataSource]="currentAssignments" class="mat-elevation-z8">
+<mat-form-field class="full-width">
+  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search for Vehicle or Camera" >
+</mat-form-field>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
   <ng-container matColumnDef="id">
     <th mat-header-cell *matHeaderCellDef>Assignment Id.</th>

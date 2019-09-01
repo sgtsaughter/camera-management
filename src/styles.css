@@ -19,15 +19,6 @@ table tr:hover {
     background-color:rgb(255, 255, 255);
 }
 
-/* helper classes */
-.hover-red:hover {
-    color: red;
-}
-
-.pointer {
-    cursor: pointer;
-}
-
 .dialog-close {
     position: relative;
     left: 97%;
@@ -76,4 +67,17 @@ table tr:hover {
     line-height: 1.2em;
     font-weight: 500;
     font-size: 13px;
+}
+
+/* helper classes */
+.hover-red:hover {
+    color: red;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.full-width {
+    width: 100%;
 }
