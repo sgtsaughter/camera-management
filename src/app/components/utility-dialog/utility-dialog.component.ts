@@ -12,7 +12,7 @@ import { CameraAssignment, Vehicle, Camera } from '../../interfaces/camera-assig
 export class UtilityDialogComponent implements OnInit {
 
   private readonly notifier: NotifierService;
-  assignmentByID;
+  assignmentByID: CameraAssignment[];
 
   assignmentForm = new FormGroup({
     vehicleId: new FormControl(''),
@@ -54,7 +54,6 @@ export class UtilityDialogComponent implements OnInit {
     });
 
     const vehicleIdMatch = this.data.assignments.some(el => {
-      // If a user is editing, 
       if (this.data.editMode && this.assignmentByID[0].vehicleId === this.assignmentForm.value.vehicleId) {
         return false;
       } else {
@@ -88,7 +87,8 @@ export class UtilityDialogComponent implements OnInit {
         this.dialogRef.close(result);
         this.notifier.notify( 'success', 'Your assignment has been created' );
       } else {
-        console.log(this.assignmentByID)
+        // If a user is editing, just send the updated camera and vehicle.
+        // Keeping DateCreated, id, and Deleted values the same.
         this.assignmentByID[0].vehicleId = this.assignmentForm.get('vehicleId').value,
         this.assignmentByID[0].cameraId = this.assignmentForm.get('cameraId').value,
         this.dialogRef.close(this.assignmentByID[0]);

@@ -4,8 +4,8 @@ export interface CameraAssignment {
     vehicleId: number;
     DateCreated: number;
     Deleted: boolean;
-    vehicleName: string;
-    deviceNumber: string;
+    vehicleName: string;  // Added this property to easily get the property back once mapped in the dashboard component.
+    deviceNumber: string; // Added this property to easily get the property back once mapped in the dashboard component.
 }
 
 export interface Vehicle {

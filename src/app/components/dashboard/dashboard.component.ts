@@ -114,8 +114,6 @@ export class DashboardComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result !== undefined) {
-        console.log(result);
-
         // If we're in edit mode, call the update function, else call the create function.
         if (this.editMode) {
           // reset flag and id.
@@ -133,6 +131,7 @@ export class DashboardComponent implements OnInit {
     });
   }
 
+  // Filter for search functionality.
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
