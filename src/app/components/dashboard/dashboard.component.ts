@@ -95,7 +95,6 @@ export class DashboardComponent implements OnInit {
 
   deleteAssignment(assignmentId) {
     this.cameraAssignmentService.deleteAssignment(assignmentId).subscribe( data => {
-      console.log('Delete Assignment', data);
       this.getAllAssignments();
       this.notifier.notify( 'warning', `Assignment ${assignmentId} Successfully Deleted.`);
     });
@@ -127,7 +126,6 @@ export class DashboardComponent implements OnInit {
           this.createAssignment(result);
         }
       }
-      console.log('The dialog was closed');
     });
   }
 

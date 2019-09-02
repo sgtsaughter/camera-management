@@ -29,7 +29,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## TODO
 
-Add edit functionality for assignments.
+Change deleted column to "Status" and if flase write "Active" if true write "Deleted"
 
 Make sure to unsubscribe to all subscriptions in components.
 
