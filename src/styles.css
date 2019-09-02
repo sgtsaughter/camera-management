@@ -75,8 +75,12 @@ table tr:hover {
 }
 
 /* helper classes */
-.hover-red:hover {
+.hover-delete:hover {
     color: red;
+}
+
+.hover-edit:hover {
+    color: blue;
 }
 
 .pointer {

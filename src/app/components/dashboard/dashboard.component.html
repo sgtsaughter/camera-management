@@ -8,7 +8,8 @@
 </div>
 
 <mat-form-field class="full-width">
-  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search for Vehicle or Camera" >
+  <mat-label><mat-icon matPrefix class="fas fa-search ml-1 mr-1"></mat-icon>Search for Vehicle or Camera</mat-label>
+  <input matInput (keyup)="applyFilter($event.target.value)" >
 </mat-form-field>
 
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
@@ -34,18 +35,18 @@
   </ng-container>
 
   <ng-container matColumnDef="Deleted">
-    <th mat-header-cell *matHeaderCellDef>Deleted</th>
-    <td mat-cell *matCellDef="let element"> {{element.Deleted}} </td>
+    <th mat-header-cell *matHeaderCellDef>Status</th>
+    <td mat-cell *matCellDef="let element"> {{element.Deleted ? 'Deleted' : 'Active'}} </td>
   </ng-container>
 
   <ng-container matColumnDef="Edit">
     <th mat-header-cell *matHeaderCellDef></th>
-    <td mat-cell *matCellDef="let element"> <i title="Edit Assignment" (click)="editAssignment(element.id)" class="fa fa-edit pointer"></i></td>
+    <td mat-cell *matCellDef="let element"> <i title="Edit Assignment" (click)="editAssignment(element.id)" class="fa fa-edit hover-edit pointer"></i></td>
   </ng-container>
 
   <ng-container matColumnDef="Delete">
     <th mat-header-cell *matHeaderCellDef></th>
-    <td mat-cell *matCellDef="let element"> <i title="Delete Assignment" (click)="deleteAssignment(element.id)" class="fa fa-trash hover-red pointer"></i></td>
+    <td mat-cell *matCellDef="let element"> <i title="Delete Assignment" (click)="deleteAssignment(element.id)" class="fa fa-trash hover-delete pointer"></i></td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

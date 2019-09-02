@@ -29,8 +29,6 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## TODO
 
-Change deleted column to "Status" and if flase write "Active" if true write "Deleted"
-
 Make sure to unsubscribe to all subscriptions in components.
 
 Possible requirements conflict - If the user needs to see all "current" assignments then what is the point of the deleted boolean.  Should they see all the deleted ones as well, or should there be a separte tab where they can see the delted assignments...possibly make the dashboard get all assignments, and filter out the assignments with the Deleted flag that are set to false. When deleting an assignment, don't actually delete, instead use PUT to update an assignment's Deleted flag.  

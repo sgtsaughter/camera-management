@@ -49,6 +49,7 @@ import {MatTreeModule} from '@angular/material/tree';
     MatTableModule,
     MatButtonModule,
     MatInputModule,
+    MatIconModule,
 
   ]
 })
