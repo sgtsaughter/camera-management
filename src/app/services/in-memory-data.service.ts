@@ -1,3 +1,5 @@
+// Service that provides initial mock data using the angular-in-memory-web-api
+// that will simulate a backend database.
 import { Injectable } from '@angular/core';
 import { InMemoryDbService } from 'angular-in-memory-web-api';
 

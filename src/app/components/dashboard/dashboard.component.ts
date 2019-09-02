@@ -125,6 +125,10 @@ export class DashboardComponent implements OnInit {
         } else {
           this.createAssignment(result);
         }
+      } else {
+        // reset flag and id just in case user closes an edit dialog.
+        this.editMode = false;
+        this.editId = undefined;
       }
     });
   }
