@@ -1,3 +1,4 @@
+// This module will handle all Angular Material Imports.
 import {NgModule} from '@angular/core';
 import {MatButtonModule} from '@angular/material/button';
 import {MatDialogModule} from '@angular/material/dialog';
@@ -9,14 +10,12 @@ import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
   exports: [
-
     MatSelectModule,
     MatDialogModule,
     MatTableModule,
     MatButtonModule,
     MatInputModule,
     MatIconModule,
-
   ]
 })
 export class VTSMaterialModule {}

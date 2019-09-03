@@ -1,8 +1,8 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { FormGroup, FormControl } from '@angular/forms';
 import { NotifierService } from 'angular-notifier';
-import { CameraAssignment, Vehicle, Camera } from '../../interfaces/camera-assignment.interface';
+import { CameraAssignment } from '../../interfaces/camera-assignment.interface';
 
 @Component({
   selector: 'app-utility-dialog',
@@ -27,13 +27,11 @@ export class UtilityDialogComponent implements OnInit {
     }
 
   ngOnInit() {
-    console.log(this.data);
     if (this.data.editMode) {
       // Populate the form with the data from the editId.
       this.assignmentByID = this.data.assignments.filter(assignment => {
         return assignment.id === this.data.editId;
       });
-      console.log(this.assignmentByID);
       this.assignmentForm.setValue({vehicleId: this.assignmentByID[0].vehicleId, cameraId: this.assignmentByID[0].cameraId });
     }
 
@@ -43,7 +41,7 @@ export class UtilityDialogComponent implements OnInit {
     // If the user chose any currently assigned vehicles or cameras display an error,
     // else create a new assignment.
     // If a user is editing, let them choose a the same vehicle or camera of the original assignment that they're editing.
-    const camerIdMatch = this.data.assignments.some(el => {
+    const camerIdMatch: boolean = this.data.assignments.some(el => {
       if (this.data.editMode && this.assignmentByID[0].cameraId === this.assignmentForm.value.cameraId) {
         return false;
       } else {
@@ -53,7 +51,7 @@ export class UtilityDialogComponent implements OnInit {
       }
     });
 
-    const vehicleIdMatch = this.data.assignments.some(el => {
+    const vehicleIdMatch: boolean = this.data.assignments.some(el => {
       if (this.data.editMode && this.assignmentByID[0].vehicleId === this.assignmentForm.value.vehicleId) {
         return false;
       } else {
@@ -85,14 +83,12 @@ export class UtilityDialogComponent implements OnInit {
         };
 
         this.dialogRef.close(result);
-        this.notifier.notify( 'success', 'Your assignment has been created' );
       } else {
         // If a user is editing, just send the updated camera and vehicle.
         // Keeping DateCreated, id, and Deleted values the same.
         this.assignmentByID[0].vehicleId = this.assignmentForm.get('vehicleId').value,
         this.assignmentByID[0].cameraId = this.assignmentForm.get('cameraId').value,
         this.dialogRef.close(this.assignmentByID[0]);
-        this.notifier.notify( 'success', 'Your assignment has been edited' );
       }
     }
 

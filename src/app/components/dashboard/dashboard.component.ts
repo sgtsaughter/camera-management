@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { CameraAssignmentService } from '../../services/camera-assignment.service';
-import { MatTableDataSource, MatSort } from '@angular/material';
+import { MatTableDataSource } from '@angular/material';
 import { CameraAssignment, Vehicle, Camera } from '../../interfaces/camera-assignment.interface';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { UtilityDialogComponent } from '../utility-dialog/utility-dialog.component';
 import { NotifierService } from 'angular-notifier';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-dashboard',
@@ -75,6 +76,7 @@ export class DashboardComponent implements OnInit {
     this.cameraAssignmentService.addCameraAssignments(data).subscribe(data=>{
       console.log('create assignment', data);
       if (data.body !== null) {
+        this.notifier.notify( 'success', 'Your assignment has been created' );
         this.getAllAssignments();
       }
     });
@@ -83,7 +85,8 @@ export class DashboardComponent implements OnInit {
   updateAssignment(data) {
     this.cameraAssignmentService.updateAssignment(data).subscribe(data=>{
       console.log('create assignment', data);
-        this.getAllAssignments();
+      this.notifier.notify( 'success', 'Your assignment has been edited' );
+      this.getAllAssignments();
     });
   }
 
@@ -112,7 +115,7 @@ export class DashboardComponent implements OnInit {
       }
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().pipe(take(1)).subscribe(result => {
       if (result !== undefined) {
         // If we're in edit mode, call the update function, else call the create function.
         if (this.editMode) {
@@ -124,7 +127,7 @@ export class DashboardComponent implements OnInit {
           this.createAssignment(result);
         }
       } else {
-        // reset flag and id just in case user closes an edit dialog.
+        // reset flag and id just in case user closes an edit dialog with the 'X' button.
         this.editMode = false;
         this.editId = undefined;
       }
